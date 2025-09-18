@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>راهنمای اجرای اسکریپت در ترموکس</title>
+<style>
+  body {
+    font-family: Tahoma, sans-serif;
+    background-color: #f9f9f9;
+    padding: 15px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  h1 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .step {
+    margin-bottom: 15px;
+  }
+  .label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .command-box {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .command-text {
+    flex: 1;
+    padding: 6px 10px;
+    font-family: monospace;
+    direction: ltr;
+  }
+  .copy-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .copy-btn:hover {
+    background-color: #45a049;
+  }
+  .alert {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 20px;
+  }
+  code {
+    background: #eee;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+</style>
+<script>
+  function copyText(id){
+    var text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(()=>{
+      alert("کپی شد: " + text);
+    });
+  }
+</script>
+</head>
+<body>
+<h1>راهنمای اجرای اسکریپت در ترموکس</h1>
+
+<div class="step">
+  <span class="label">۱. بروز رسانی ترموکس:</span>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyText('cmd1')">Copy</button>
+    <div class="command-text" id="cmd1">pkg update && pkg upgrade -y</div>
+  </div>
+</div>
+
+<div class="step">
+  <span class="label">۲. اجازه دسترسی به حافظه داخلی (بعد از اجرا Allow بزنید و ترموکس را ببندید و دوباره باز کنید):</span>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyText('cmd2')">Copy</button>
+    <div class="command-text" id="cmd2">termux-setup-storage</div>
+  </div>
+</div>
+
+<div class="step">
+  <span class="label">۳. نصب پایتون:</span>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyText('cmd3')">Copy</button>
+    <div class="command-text" id="cmd3">pkg install python -y</div>
+  </div>
+</div>
+
+<div class="step">
+  <span class="label">۴. نصب کتابخانه‌های لازم:</span>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyText('cmd4')">Copy</button>
+    <div class="command-text" id="cmd4">pip install requests ntplib pytz urllib3 icmplib colorama</div>
+  </div>
+</div>
+
+<div class="step">
+  <span class="label">۵. رفتن به پوشه اسکریپت 
+  <br>(قبل از این کار فایل ZIP را از حالت فشرده خارج کنید و پوشه Unlock را به پوشه Download انتقال دهید):</span>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyText('cmd5')">Copy</button>
+    <div class="command-text" id="cmd5">cd /sdcard/Download/Unlock</div>
+  </div>
+</div>
+
+<div class="step">
+  <span class="label">۶. اجرای اسکریپت:</span>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyText('cmd6')">Copy</button>
+    <div class="command-text" id="cmd6">python Unlock\ premission.py</div>
+  </div>
+</div>
+
+<div class="alert">
+  ⚠️ <strong>توجه مهم قبل از اجرای دستورات:</strong>
+  <ul>
+    <li>اول فایل ZIP را از حالت فشرده خارج کنید.</li>
+    <li>پوشهٔ داخلی (مثل Unlock یا SCRIPT) را به پوشهٔ Download منتقل کنید تا مسیر دقیقاً مطابق دستور بالا باشد.</li>
+    <li>اگر پوشه را جای دیگری گذاشتید، کافی است در دستور <code>cd</code> مسیر صحیح را خودتان وارد کنید
+    (مثلاً: <code>cd /sdcard/YourPath/Unlock</code>).</li>
+  </ul>
+</div>
+
+</body>
+</html>
